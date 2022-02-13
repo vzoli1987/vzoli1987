@@ -1,0 +1,1 @@
+curl "https://www.napiszar.com/kategoria/youtube/" > napiszar.stream && cat napiszar.stream | grep -Eo "https://www.youtube.com/v/[^[:space:]\"\'\\]{11}" | uniq | awk '$0=";"$0' | nl | awk '{$1=$1;print}' | tr -d " " | awk '{$1=$1";;";;$0=$1;print}' | paste -d - - | awk '{print $0""NR;}' | awk '{$1=$1";;;";;;$0=$1;print}' | awk '{print $0""NR;}' > /media/hdd/urllist.stream
